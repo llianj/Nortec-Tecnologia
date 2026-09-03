@@ -1,0 +1,36 @@
+::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #16a34a; }
+        
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(34, 197, 94, 0.2); }
+        .glass-input { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(34,197,94,0.3); color: white; transition: all 0.2s; }
+        .glass-input:focus { outline: none; border-color: #22c55e; box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2); }
+        
+        .kanban-board { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; height: calc(100vh - 180px); }
+        .kanban-column { background: #1e293b; border-radius: 0.5rem; width: 300px; min-width: 300px; display: flex; flex-direction: column; border-top: 3px solid #22c55e; }
+        .kanban-header { padding: 1rem; font-weight: bold; border-bottom: 1px solid rgba(34,197,94,0.2); }
+        .kanban-cards { padding: 0.5rem; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; min-height: 100px;}
+        .kanban-card { background: #0f172a; padding: 1rem; border-radius: 0.25rem; border-left: 4px solid #22c55e; cursor: grab; }
+        .kanban-card:active { cursor: grabbing; }
+
+        @media print {
+            body * { visibility: hidden; }
+            #print-container, #print-container * { visibility: visible; }
+            #print-container { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; background: white; color: black; }
+            
+            /* A4 Print */
+            .print-a4 { width: 210mm; padding: 10mm; margin: 0 auto; background: white; font-family: sans-serif; }
+            .print-a4 .header { display: flex; align-items: center; border-bottom: 2px solid #22c55e; padding-bottom: 10px; margin-bottom: 20px; }
+            .print-a4 .logo { max-width: 120px; max-height: 120px; margin-right: 20px; object-fit: contain; }
+            
+            /* Thermal Print 80mm */
+            .print-thermal { width: 80mm; font-family: monospace; font-size: 12px; line-height: 1.2; padding: 2mm; color: black; margin: 0 auto; }
+            .thermal-logo { max-width: 100px; max-height: 100px; margin: 0 auto 10px auto; display: block; object-fit: contain; filter: grayscale(100%) contrast(1.2); }
+            .print-thermal .divider { border-bottom: 1px dashed #000; margin: 8px 0; }
+            .print-thermal .text-center { text-align: center; }
+            .print-thermal .bold { font-weight: bold; }
+            .print-thermal .item-row { display: flex; justify-content: space-between; margin-bottom: 2px; }
+            .print-thermal p { margin: 2px 0; }
+        }
