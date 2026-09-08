@@ -1329,6 +1329,19 @@
             p.innerHTML = el;
             window.print();
         }
+
+        //ver senha
+        function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('login-pass');
+    const icon = document.getElementById('password-toggle-icon');
+
+    const isHidden = passwordInput.type === 'password';
+
+    passwordInput.type = isHidden ? 'text' : 'password';
+    icon.className = isHidden
+        ? 'ph ph-eye-slash text-xl'
+        : 'ph ph-eye text-xl';
+}
  
         // --- Inicia ---
         initData();

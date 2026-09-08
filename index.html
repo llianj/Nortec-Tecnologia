@@ -10,7 +10,7 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -29,10 +29,23 @@
                     <label class="block text-left text-xs text-green-400 mb-1 ml-1 font-bold">Usuário</label>
                     <input type="text" id="login-user" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-green-500/30 text-white focus:border-green-500 focus:shadow-[0_0_10px_rgba(34,197,94,0.2)] outline-none transition-all">
                 </div>
-                <div>
-                    <label class="block text-left text-xs text-green-400 mb-1 ml-1 font-bold">Senha</label>
-                    <input type="password" id="login-pass" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-green-500/30 text-white focus:border-green-500 focus:shadow-[0_0_10px_rgba(34,197,94,0.2)] outline-none transition-all" onkeydown="if(event.key==='Enter') handleLogin()">
-                </div>
+                <div class="relative">
+    <input
+        type="password"
+        id="login-pass"
+        class="w-full px-4 py-3 pr-12 rounded-lg bg-[#0f172a] border border-green-500/30 text-white focus:border-green-500 focus:shadow-[0_0_10px_rgba(34,197,94,0.2)] outline-none transition-all"
+        onkeydown="if(event.key==='Enter') handleLogin()"
+    >
+
+    <button
+        type="button"
+        onclick="togglePasswordVisibility()"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-green-400 hover:text-white"
+        aria-label="Mostrar senha"
+    >
+        <i id="password-toggle-icon" class="ph ph-eye text-xl"></i>
+    </button>
+</div>
                 <button onclick="handleLogin()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors mt-2 shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:shadow-[0_6px_20px_rgba(34,197,94,0.23)]">
                     Entrar no Sistema
                 </button>
