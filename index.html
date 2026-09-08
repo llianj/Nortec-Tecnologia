@@ -10,7 +10,7 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -41,24 +41,10 @@
             
             <div class="mt-6 pt-6 border-t border-green-500/20">
                 <p class="text-sm text-slate-400 mb-3">Área do Cliente</p>
-                <button onclick="openTracking()" class="text-green-400 hover:text-green-300 text-sm font-medium flex items-center justify-center gap-2 w-full">
+                <a href="rastreio.html" target="_blank" class="text-green-400 hover:text-green-300 text-sm font-medium flex items-center justify-center gap-2 w-full">
                     <i class="ph ph-magnifying-glass"></i> Rastrear Equipamento
-                </button>
+                </a>
             </div>
-        </div>
-    </div>
-
-    <!-- TELA DE RASTREIO CLIENTE -->
-    <div id="tracking-screen" class="fixed inset-0 z-[60] flex items-center justify-center bg-[#0f172a] hidden">
-        <div class="bg-[#1e293b] p-8 rounded-xl shadow-2xl border border-green-500/30 w-full max-w-md text-center">
-            <h2 class="text-2xl font-bold text-white mb-6"><span class="text-green-500">Rastreio</span> de OS</h2>
-            <p class="text-sm text-slate-400 mb-4">Digite o número da sua Ordem de Serviço para acompanhar o status.</p>
-            <input type="number" id="track-id" placeholder="Ex: 15" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-green-500/30 text-white text-center text-lg font-bold mb-4 focus:border-green-500 outline-none">
-            <button onclick="doTracking()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-colors mb-4">Buscar Status</button>
-            
-            <div id="track-result" class="hidden bg-[#0f172a] p-4 rounded-lg text-left border border-green-500/30"></div>
-            
-            <button onclick="closeTracking()" class="text-slate-400 hover:text-white text-sm mt-4">Voltar ao Início</button>
         </div>
     </div>
 
@@ -157,12 +143,17 @@
                     </button>
                     <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide truncate" id="view-title">Painel Geral</h2>
                 </div>
-                <div class="flex items-center gap-4 shrink-0">
+                <div class="flex items-center gap-4 shrink-0 relative">
                     <span class="text-sm text-green-400 font-medium hidden sm:block" id="current-date"></span>
-                    <button class="w-8 h-8 rounded-full bg-[#1e293b] border border-green-500/30 flex items-center justify-center text-green-400 hover:text-white hover:bg-green-600 transition-colors relative">
+                    <button onclick="toggleNotifications()" class="w-8 h-8 rounded-full bg-[#1e293b] border border-green-500/30 flex items-center justify-center text-green-400 hover:text-white hover:bg-green-600 transition-colors relative">
                         <i class="ph ph-bell text-lg"></i>
-                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        <span id="notif-dot" class="hidden absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                     </button>
+                    <!-- Painel real de avisos, alimentado pelos dados do sistema -->
+                    <div id="notif-panel" class="hidden absolute right-0 top-full mt-2 w-80 max-w-[90vw] bg-[#1e293b] border border-green-500/30 rounded-xl shadow-2xl z-50 max-h-96 overflow-y-auto">
+                        <div class="p-3 border-b border-green-500/20 font-bold text-white text-sm">Avisos do Sistema</div>
+                        <div id="notif-list" class="p-2 space-y-2"></div>
+                    </div>
                 </div>
             </header>
 
@@ -210,12 +201,7 @@
                         </div>
                         <div class="glass-panel rounded-xl p-6 shadow-lg">
                             <h3 class="text-lg font-bold text-white mb-4 border-b border-green-500/20 pb-2"><i class="ph ph-bell-ringing text-amber-500"></i> Avisos do Sistema</h3>
-                            <div class="space-y-4" id="dash-alerts">
-                                <div class="p-3 bg-green-500/10 border border-green-500/30 rounded-lg flex gap-3">
-                                    <i class="ph ph-info text-green-500 text-xl shrink-0"></i>
-                                    <div><h4 class="text-sm font-bold text-green-400">Bem-vindo ao NortecOS</h4><p class="text-xs text-slate-400 mt-1">Sistema inicializado e pronto para uso operacional.</p></div>
-                                </div>
-                            </div>
+                            <div class="space-y-4" id="dash-alerts"></div>
                         </div>
                     </div>
                 </div>

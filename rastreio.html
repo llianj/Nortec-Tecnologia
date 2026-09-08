@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreio de OS — NortecOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Página avulsa: reaproveita as cores do sistema principal, sem depender do resto do app */
+        html, body { height: 100%; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-[#1e293b] p-8 rounded-xl shadow-2xl border border-green-500/30 w-full max-w-md text-center">
+            <div class="flex justify-center mb-4">
+                <img src="logo.jpeg" alt="NORTEC" class="w-24 h-24 object-contain rounded-full border-4 border-green-500 shadow-[0_0_20px_rgba(34,197,94,0.4)]" onerror="this.style.display='none'; document.getElementById('rt-fallback-icon').style.display='block';">
+                <i id="rt-fallback-icon" class="ph ph-cpu text-5xl text-green-500" style="display:none;"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-1"><span class="text-green-500">Rastreio</span> de OS</h2>
+            <p class="text-sm text-slate-400 mb-6">Nortec Tecnologia</p>
+
+            <div id="rt-form">
+                <p class="text-sm text-slate-400 mb-4">Digite o número da sua Ordem de Serviço para acompanhar o status.</p>
+                <input type="number" id="track-id" placeholder="Ex: 15" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-green-500/30 text-white text-center text-lg font-bold mb-4 focus:border-green-500 outline-none" onkeydown="if(event.key==='Enter') doTracking()">
+                <button onclick="doTracking()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-colors">
+                    <i class="ph ph-magnifying-glass"></i> Buscar Status
+                </button>
+            </div>
+
+            <div id="track-result" class="hidden bg-[#0f172a] p-4 rounded-lg text-left border border-green-500/30 mt-4"></div>
+
+            <button onclick="resetTracking()" id="rt-back-btn" class="hidden text-slate-400 hover:text-white text-sm mt-4">
+                <i class="ph ph-arrow-left"></i> Consultar outra OS
+            </button>
+        </div>
+    </div>
+
+    <script src="rastreio.js"></script>
+</body>
+</html>
