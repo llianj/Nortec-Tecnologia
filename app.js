@@ -1331,7 +1331,7 @@
         }
 
         //ver senha
-        function togglePasswordVisibility() {
+        window.togglePasswordVisibility = function () {
     const passwordInput = document.getElementById('login-pass');
     const icon = document.getElementById('password-toggle-icon');
 
@@ -1341,7 +1341,7 @@
     icon.className = isHidden
         ? 'ph ph-eye-slash text-xl'
         : 'ph ph-eye text-xl';
-}
+};
  
         // --- Inicia ---
         initData();
