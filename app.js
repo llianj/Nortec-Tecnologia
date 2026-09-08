@@ -91,13 +91,12 @@
  
                 document.getElementById('fin-month-filter').value = new Date().toISOString().slice(0, 7);
                 dataLoaded = true;
-                if (statusEl) statusEl.innerText = 'Conectado ao banco de dados.';
+                if (statusEl) statusEl.innerText = '';
                 refreshAllViews();
             } catch (err) {
                 console.error(err);
                 dataLoaded = false;
-                if (statusEl) statusEl.innerText = 'Erro ao conectar ao banco. Verifique SUPABASE_URL/ANON_KEY.';
-                showToast('Erro ao conectar ao Supabase.', 'error');
+                if (statusEl) statusEl.innerText = '', 'error');
             }
         }
  
