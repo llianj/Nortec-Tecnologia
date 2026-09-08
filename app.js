@@ -1,8 +1,8 @@
 // =====================================================================
         // CONFIGURAÇÃO SUPABASE — troque pelos dados do SEU projeto
         // =====================================================================
-        const SUPABASE_URL = 'https://ymmqgegfwajuzellaxtv.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_D56Elfod7F6wf6gwcE4aKA_l-mu_iEp'; 
+        const SUPABASE_URL = 'https://SEU-PROJETO.supabase.co';
+        const SUPABASE_ANON_KEY = 'SUA-CHAVE-ANON-PUBLICA';
         const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         let currentUser = null;
@@ -168,7 +168,23 @@
             }
         }
 
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const isOpen = sidebar.classList.contains('mobile-open');
+            if (isOpen) closeMobileSidebar();
+            else {
+                sidebar.classList.add('mobile-open');
+                overlay.classList.remove('hidden');
+            }
+        }
+        function closeMobileSidebar() {
+            document.getElementById('sidebar').classList.remove('mobile-open');
+            document.getElementById('sidebar-overlay').classList.add('hidden');
+        }
+
         function showView(viewId) {
+            closeMobileSidebar(); // fecha o menu automaticamente ao escolher uma tela, no celular
             document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
             document.getElementById('view-' + viewId).classList.remove('hidden');
 
