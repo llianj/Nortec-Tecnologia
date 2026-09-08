@@ -96,7 +96,7 @@
             } catch (err) {
                 console.error(err);
                 dataLoaded = false;
-                if (statusEl) statusEl.innerText = '', 'error');
+                if (statusEl) statusEl.innerText = 'error';
             }
         }
  
