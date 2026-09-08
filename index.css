@@ -15,6 +15,39 @@
         .kanban-card { background: #0f172a; padding: 1rem; border-radius: 0.25rem; border-left: 4px solid #22c55e; cursor: grab; }
         .kanban-card:active { cursor: grabbing; }
 
+        /* Corrige contraste dos <select>: sem isso, o navegador mostra a lista de opções
+           com fundo claro do sistema, deixando o texto branco quase ilegível */
+        select, select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        select option:checked, select option:hover {
+            background-color: #16a34a !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #64748b;
+        }
+
+        /* Força a cor do texto em TODOS os campos (alguns navegadores/sistemas
+           renderizam o texto do select com a cor "padrão" do SO, ignorando o CSS,
+           deixando o texto apagado/cinza mesmo com color definido acima) */
+        input, textarea, select, .glass-input {
+            color: #f8fafc !important;
+        }
+
+        /* Remove a aparência nativa do select (que trazia esse problema de cor)
+           e desenha uma setinha customizada no lugar da seta padrão do sistema */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2322c55e'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.65rem center;
+            background-size: 1.1em;
+            padding-right: 2.2rem;
+        }
+
         /* ================= RESPONSIVO (CELULAR) ================= */
         @media (max-width: 767px) {
             #sidebar {
